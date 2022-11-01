@@ -1,6 +1,6 @@
 FROM ghcr.io/unb-libraries/cypress:10.x-1.x
 
-COPY ./cypress/support/plugins/drupal.js /cypress/support/plugins/drupal.js
+COPY ./cypress/support/plugins/contrib/drupal.js /cypress/support/plugins/contrib/drupal.js
 RUN npm install @unb-libraries/cypress-drupal
 
 LABEL ca.unb.lib.generator="cypress" \
