@@ -1,7 +1,12 @@
 FROM ghcr.io/unb-libraries/cypress:10.x-1.x
 
 COPY ./cypress/support/plugins/contrib/drupal.js /cypress/support/plugins/contrib/drupal.js
-RUN npm install @unb-libraries/cypress-drupal
+COPY ./cypress/cypress.config.js /cypress/cypress.config.drupal.js
+
+RUN mv /cypress/cypress.config.js /cypress/cypress.config.default.js && \
+    mv /cypress/cypress.config.drupal.js /cypress/cypress.config.js && \
+    npm install @unb-libraries/cypress-drupal
+    
 
 LABEL ca.unb.lib.generator="cypress" \
   org.label-schema.build-date=$BUILD_DATE \
